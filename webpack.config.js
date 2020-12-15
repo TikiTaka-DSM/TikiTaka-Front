@@ -22,17 +22,18 @@ module.exports = {
           },
         },
       },
-      {test: /\.(jpg|png|jpeg|gif|svg)?$/,
-        use:[
-            {
-                loader: 'file-loader',
-                options: {
-                    name: '[name].[ext]',
-                    context: 'src/',
-                }
-            }
-        ]
-        )}
+      {
+        test: /\.(jpg|png|jpeg|gif|svg)?$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              context: "src/",
+            },
+          },
+        ],
+      },
     ],
   },
   resolve: {
