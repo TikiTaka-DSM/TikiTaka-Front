@@ -47,7 +47,10 @@ export const Logo = styled.img`
 `;
 
 export const InputBox = styled.div`
-  height: 30%;
+  height: ${(props) => {
+    if (props.login) return "30%";
+    else return "40%";
+  }};
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
@@ -80,7 +83,7 @@ export const LoginText = styled.h4`
   color: #ffddd5;
 `;
 
-export const LoginBtn = styled.button`
+export const UserButton = styled.button`
   outline: none;
   border: 1px solid black;
   background-color: white;
@@ -102,3 +105,16 @@ const btnChange = css`
   color: white;
   border: #fec9b9;
 `;
+export const SingUp = styled.p`
+  margin-right: 0.6rem;
+  color: gray;
+  font-size: 12px;
+  cursor: pointer;
+  :hover {
+    color: #fec9b9;
+  }
+`;
+export const Name = styled(InputId).attrs({
+  type: "text",
+  placeholder: "Name",
+})``;
