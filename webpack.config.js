@@ -41,9 +41,10 @@ module.exports = {
   },
   plugins: [new HtmlWebpackPlugin({ template: "./public/index.html" })],
   devServer: {
+    historyApiFallback: true,
     contentBase: path.join(__dirname, "dist"),
     host: "localhost",
-    port: 3000,
+    port: 3001,
     open: true,
   },
 };
