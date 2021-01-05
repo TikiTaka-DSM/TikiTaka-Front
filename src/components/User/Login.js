@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as S from "../../assets/style/User/UserStyle";
 import { chat, logo } from "../../assets/img";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
   let [data, setData] = useState({
@@ -8,7 +9,7 @@ const Login = () => {
     pw: "",
   });
   let [isInput, setIsInput] = useState(false);
-
+  const history = useHistory();
   const { id, pw } = data;
 
   const inputChange = (e) => {
@@ -18,14 +19,18 @@ const Login = () => {
     if (name == "pw" && value == "") setIsInput(false);
   };
 
-  const login = () => {
+  const getLogin = () => {
     if (isInput) {
-      console.log(data);
-    } else console.log("no");
+      //서버 통신 로그인
+    }
   };
 
   const loginEnter = (e) => {
     if (window.event.keyCode == 13) login();
+  };
+
+  const move = () => {
+    history.push("/signUp");
   };
   return (
     <S.MainContainer>
@@ -40,7 +45,7 @@ const Login = () => {
           <S.LoginText>
             티키타카를 통해 다양한 사람들과 대화를 해 보세요!
           </S.LoginText>
-          <S.InputBox>
+          <S.InputBox login>
             <S.InputId name="id" onChange={inputChange} />
             <S.InputPw
               name="pw"
@@ -48,9 +53,10 @@ const Login = () => {
               onKeyPress={loginEnter}
             />
           </S.InputBox>
-          <S.LoginBtn isInput={isInput} onClick={login}>
+          <S.UserButton isInput={isInput} onClick={getLogin}>
             Login
-          </S.LoginBtn>
+          </S.UserButton>
+          <S.SingUp onClick={move}>회원이 아니신가요?</S.SingUp>
         </S.LoginBox>
       </S.LoginContainer>
     </S.MainContainer>
