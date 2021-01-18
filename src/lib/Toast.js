@@ -14,7 +14,7 @@ export const Error = (message) => {
   });
 };
 
-export const warning = (message) => {
+export const Warning = (message) => {
   toast.warning(message, {
     autoClose: 3000,
   });
