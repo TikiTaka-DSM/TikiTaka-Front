@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import * as S from "../../assets/style/User/UserStyle";
 import { chat, logo } from "../../assets/img";
 import { useHistory } from "react-router-dom";
-
+import { Error, Warning } from "../../lib/Toast";
+import { ToastContainer } from "react-toastify";
+import { UserLogin } from "../../lib/User";
 const Login = () => {
   let [data, setData] = useState({
     id: "",
@@ -21,12 +23,30 @@ const Login = () => {
 
   const getLogin = () => {
     if (isInput) {
-      //서버 통신 로그인
+      UserLogin(id, pw)
+        .then((res) => {
+          switch (res.status) {
+            case 200:
+              localStorage.setItem("accessToken", res.data.tokens.accessToken);
+              history.push("/main");
+          }
+        })
+        .catch((err) => {
+          switch (err.response.status) {
+            case 404:
+              Error("존재하지 않은 아이디입니다.");
+              break;
+            case 400:
+              Warning("비밀번호가 잘못 되었습니다");
+          }
+        });
+    } else {
+      Error("빈 칸이 존재합니다. 입력 칸을 모두 채워주세요.");
     }
   };
 
   const loginEnter = (e) => {
-    if (window.event.keyCode == 13) login();
+    if (window.event.keyCode == 13) getLogin();
   };
 
   const move = () => {
@@ -34,6 +54,7 @@ const Login = () => {
   };
   return (
     <S.MainContainer>
+      <ToastContainer />
       <S.LeftContainer>
         <S.IconBox>
           <S.LeftIcon src={chat}></S.LeftIcon>
