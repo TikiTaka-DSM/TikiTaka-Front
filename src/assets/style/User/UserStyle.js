@@ -80,7 +80,7 @@ export const InputPw = styled(InputId).attrs({
 })``;
 
 export const LoginText = styled.h4`
-  color: #ffddd5;
+  color: #ffbca8;
 `;
 
 export const UserButton = styled.button`
