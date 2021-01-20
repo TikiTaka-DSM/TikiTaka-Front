@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as S from "../../assets/style/User/UserStyle";
 import { chat, logo } from "../../assets/img";
 import { useHistory } from "react-router-dom";
-import { Error, Warning } from "../../lib/Toast";
+import { Error, Warning, Success } from "../../lib/Toast";
 import { ToastContainer } from "react-toastify";
 import { UserLogin } from "../../lib/User";
 const Login = () => {
@@ -27,6 +27,7 @@ const Login = () => {
         .then((res) => {
           switch (res.status) {
             case 200:
+              Success("로그인이 되었습니다.");
               localStorage.setItem("accessToken", res.data.tokens.accessToken);
               history.push("/main");
           }
