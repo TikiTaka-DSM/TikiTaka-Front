@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as S from "../../assets/style/User/UserStyle";
 import { logo, chat } from "../../assets/img";
 import { useHistory } from "react-router-dom";
-import { Error, Warning } from "../../lib/Toast";
+import { Error, Success, Warning } from "../../lib/Toast";
 import { ToastContainer } from "react-toastify";
 import { UserJoin } from "../../lib/User";
 import { getAPI } from "../../lib/API";
@@ -14,7 +14,7 @@ const SignUp = () => {
     user: "",
   });
   let [isInput, setIsInput] = useState(false);
-
+  const history = useHistory();
   const { id, pw, user } = data;
 
   const inputData = (e) => {
@@ -30,7 +30,10 @@ const SignUp = () => {
   const getSignUp = () => {
     if (isInput) {
       UserJoin(id, pw, user)
-        .then((res) => {})
+        .then((res) => {
+          Success("회원가입이 완료되었습니다. 로그인을 해 주세요.");
+          history.push("/login");
+        })
         .catch((err) => {
           switch (err.response.status) {
             case 409:
@@ -38,7 +41,7 @@ const SignUp = () => {
           }
         });
     } else {
-      Error("빈 칸이 존재합니다. 모두 입력해 주세요.");
+      Warning("빈 칸이 존재합니다. 모두 입력해 주세요.");
     }
   };
 
