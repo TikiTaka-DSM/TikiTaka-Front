@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const LeftContainer = styled.div`
+export const ListContainer = styled.div`
   width: 20%;
   height: 100%;
   display: flex;
@@ -38,4 +38,5 @@ export const Search = styled.input.attrs({
   type: "text",
   placeholder: "Search",
 })``;
+
 export const RightContainer = styled.div``;
