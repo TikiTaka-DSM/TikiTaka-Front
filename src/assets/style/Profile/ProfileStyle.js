@@ -29,13 +29,14 @@ export const ImgBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: -1.25rem 0 20px 0;
 `;
 export const Profile = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
 `;
-export const Name = styled.p`
+export const Name = styled.span`
   font-size: 20px;
   font-weight: bold;
 `;
@@ -55,6 +56,30 @@ export const Introduce = styled.input.attrs({
   width: ${(props) => props.length}px;
   text-align: center;
   font-size: 18px;
+  margin-top: 0.625rem;
 `;
 
-export const EditBut = styled.button``;
+export const EditBut = styled.button`
+  color: white;
+  width: 15%;
+  height: 6%;
+  font-size: 12px;
+  background-color: #fdc9ba;
+  border: none;
+  outline: none;
+  border-radius: 3.125rem;
+  margin-top: 4.375rem;
+  cursor: pointer;
+`;
+
+export const ButtonBox = styled.div`
+  width: 20%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+`;
+
+export const ProfileBut = styled(EditBut)`
+  width: 40%;
+  height: 25px;
+`;
