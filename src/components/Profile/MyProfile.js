@@ -6,7 +6,7 @@ const MyProfile = () => {
   let [data, setData] = useState({
     name: "",
     id: "",
-    introduce: "",
+    introduce: "오늘의 날씨는 비",
     img: "",
   });
   let [length, setLength] = useState(0);
@@ -35,6 +35,7 @@ const MyProfile = () => {
         <S.Name>{data.name}</S.Name>
         <S.ID>ID : {data.id}</S.ID>
         <S.Introduce value={data.introduce} length={length + length * 13} />
+        <S.EditBut>프로필 변경</S.EditBut>
       </S.ProfileBox>
     </S.MainContainer>
   );
