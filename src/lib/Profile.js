@@ -1,4 +1,3 @@
-import axios from "axios";
 import { getAccessToken, getFormData } from "./API";
 
 export const getMyProfile = () => {
