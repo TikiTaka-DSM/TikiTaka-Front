@@ -6,7 +6,7 @@ const MyProfile = () => {
   let [data, setData] = useState({
     name: "",
     id: "",
-    introduce: "오늘의 날씨는 비",
+    introduce: "",
     img: "",
   });
   let [length, setLength] = useState(0);
