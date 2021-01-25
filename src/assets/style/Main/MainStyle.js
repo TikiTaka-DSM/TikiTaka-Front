@@ -23,9 +23,18 @@ export const ProfileBox = styled.div`
   background-color: white;
   border: none;
   border-radius: 50%;
-  width: 90px;
-  height: 63px;
-  margin: 10px 0 0 10px;
+  width: ${(props) => {
+    if (props.main) return "57px";
+    else return "90px";
+  }};
+  height: ${(props) => {
+    if (props.main) return "55px";
+    else return "63px";
+  }};
+  margin: ${(props) => {
+    if (props.main) return "0 15px 0 15px";
+    else return "10px 0 0 10px";
+  }};
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -33,7 +42,10 @@ export const ProfileBox = styled.div`
 `;
 
 export const Profile = styled.img`
-  max-height: 110px;
+  max-height: ${(props) => {
+    if (props.main) return "80px";
+    else return "110px";
+  }};
 `;
 
 export const RightContainer = styled.div``;
