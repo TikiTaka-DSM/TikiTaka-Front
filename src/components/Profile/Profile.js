@@ -41,7 +41,7 @@ const Profile = () => {
           <S.Profile src={imgSrc + data.img} />
         </S.ImgBox>
         <S.Name>{data.name}</S.Name>
-        <S.ID> ID :{data.id}</S.ID>
+        <S.ID> ID : {data.id}</S.ID>
         <S.Introduce value={data.message} length={length + length * 13} />
 
         {state.friend ? (
