@@ -5,7 +5,7 @@ export const ChatList = () => {
 };
 
 export const RoomCreate = (friend_id) => {
-  return getAccessToken.post("/room", { people: [friend_id] });
+  return getAccessToken.post("/room", { friend: friend_id });
 };
 
 export const ChatData = (id) => {
