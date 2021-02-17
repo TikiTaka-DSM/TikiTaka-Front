@@ -8,6 +8,6 @@ export const getProfile = (user_id) => {
   return getAccessToken.get(`/profile/${user_id}`);
 };
 
-export const profileEdit = (img, name, statusMessage) => {
+export const editProfile = (img, name, statusMessage) => {
   return getFormData.put("/profile");
 };
