@@ -4,3 +4,5 @@ export { default as search } from "./search.png";
 export { default as chatImg } from "./chatImg.png";
 export { default as chatRecord } from "./chatRecord.png";
 export { default as chatSend } from "./chatSend.png";
+export { default as edit } from "./profileEdit.png";
+export { default as testImg } from "./test2.jpg";
