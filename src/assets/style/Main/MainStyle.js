@@ -25,20 +25,23 @@ export const ProfileBox = styled.div`
   border-radius: 50%;
   width: ${(props) => {
     if (props.main) return "57px";
+    else if (props.list) return "62px";
     else return "90px";
   }};
   height: ${(props) => {
     if (props.main) return "55px";
+    else if (props.list) return "62px";
     else return "63px";
   }};
   margin: ${(props) => {
-    if (props.main) return "0 15px 0 15px";
+    if (props.main || props.list) return "0 15px 0 15px";
     else return "10px 0 0 10px";
   }};
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const Profile = styled.img`
@@ -48,4 +51,32 @@ export const Profile = styled.img`
   }};
 `;
 
-export const RightContainer = styled.div``;
+export const ListBox = styled.div`
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  flex-wrap: wrap;
+  margin-top: 5px;
+`;
+
+export const ItemBox = styled.div`
+  width: 100%;
+  height: 75px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+`;
+
+export const TextBox = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+export const Name = styled.div`
+  font-weight: bold;
+  font-size: 12px;
+`;
+
+export const Message = styled.h1`
+  font-size: 10px;
+`;
