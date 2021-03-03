@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import * as S from "../../assets/style/Profile/ProfileStyle";
 import { getProfile } from "../../lib/Profile";
+import { UserBlock } from "../../lib/User";
+import { useHistory } from "react-router-dom";
 
 const Profile = () => {
   let [data, setData] = useState({
@@ -13,11 +15,14 @@ const Profile = () => {
     block: false,
     friend: false,
   });
+
+  const history = useHistory();
   const imgSrc = "https://jobits.s3.ap-northeast-2.amazonaws.com/";
 
   //user id 주소에서 가져오기
   useEffect(() => {
-    getProfile("Gayo03").then((res) => {
+    console.log(history);
+    getProfile("ex2").then((res) => {
       console.log(res.data);
       setData({
         ...state,
@@ -34,6 +39,16 @@ const Profile = () => {
     });
   }, []);
 
+  const block = () => {
+    UserBlock("ex2").then((res) => {
+      console.log(state.block);
+      // if (res.status == 200) {
+      //   setState({ ...state, block: true });
+      // }
+      console.log(res);
+      console;
+    });
+  };
   return (
     <S.MainContainer>
       <S.ProfileBox>
@@ -47,7 +62,7 @@ const Profile = () => {
         {state.friend ? (
           <S.ButtonBox>
             <S.ProfileBut>채팅하기</S.ProfileBut>
-            <S.ProfileBut>차단하기</S.ProfileBut>
+            <S.ProfileBut onClick={block}>차단하기</S.ProfileBut>
           </S.ButtonBox>
         ) : (
           <S.ButtonBox>
