@@ -1,10 +1,5 @@
 import styled from "styled-components";
 
-export const ImgBox = styled.div`
-  width: 60%;
-  height: 60%;
-`;
-
 export const ImgForm = styled.form.attrs({
   action: "http://54.180.2.226:5000/profile",
   method: "put",
@@ -26,4 +21,28 @@ export const ProfileChange = styled.label.attrs({
   cursor: pointer;
 `;
 
-export const ProfileImg = styled.img``;
+export const ImgBox = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
+  line-height: 130px;
+`;
+export const Change = styled.img`
+  position: relative;
+  width: 50%;
+  z-index: 2;
+  left: 18%;
+
+  vertical-align: middle;
+`;
+export const ProfileImg = styled.img`
+  width: 85%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  filter: brightness(50%);
+  border-radius: 50%;
+  object-fit: cover;
+`;
