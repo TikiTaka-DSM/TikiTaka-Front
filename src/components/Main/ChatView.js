@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as S from "../../assets/style/Main/ChatStyle";
 import * as P from "../../assets/style/Main/MainStyle";
 import test2 from "../../assets/img/test2.jpg";
@@ -6,16 +6,34 @@ import { chatImg, chatRecord, chatSend } from "../../assets/img";
 import io from "socket.io-client";
 import Chat from "./Chat";
 import ChatList from "./ChatList";
+import { RoomCreate, ChatData } from "../../lib/Chat";
 
-const socket = io("http://54.180.2.226:3000");
+const socket = io("http://54.180.2.226:3003");
 
 const ChatView = () => {
   let [chat, setChat] = useState("");
+  let [room, setRoom] = useState(23);
+  let [data, setData] = useState({
+    img: "",
+    name: "",
+  });
   const imgUrl = "https://jobits.s3.ap-northeast-2.amazonaws.com/";
   const config = {};
+
   const Message = (e) => {
     setChat(e.target.value);
   };
+
+  useEffect(() => {
+    socket.emit("joinRoom", 23);
+    ChatData(23).then((res) => {
+      console.log(res.data);
+      setData({
+        img: res.data.roomData.img,
+        name: res.data.roomData.name,
+      });
+    });
+  }, []);
 
   const inputEnter = () => {
     if (window.event.keyCode === 13) {
@@ -24,13 +42,18 @@ const ChatView = () => {
   };
 
   const getChat = () => {
-    //채팅 보내는 소켓
-    console.log(chat);
-    socket.disconnect();
+    console.log(data);
 
-    const test = socket.on("test");
-    console.log(test);
-    // socket.emit("sendMessage", {'roomID' : , "token":});
+    const messageData = {
+      roomId: room,
+      token: localStorage.getItem("accessToken"),
+      message: chat,
+    };
+
+    socket.emit("sendMessage", messageData);
+    socket.on("realTimeChatting", (chatMessage) => {
+      console.log(chatMessage);
+    });
     // const test2 = socket.on("realTimeChatting");
   };
   return (
@@ -42,7 +65,10 @@ const ChatView = () => {
           </P.ProfileBox>
           <S.Name>백예린</S.Name>
         </S.Header>
-        <S.MessageContainer>{/* <Chat /> */}</S.MessageContainer>
+        <S.MessageContainer>
+          {/* <ul id="chat"></ul> */}
+          <Chat />
+        </S.MessageContainer>
         <S.InputContainer>
           <S.img src={chatImg} />
           <S.img src={chatRecord} record />
