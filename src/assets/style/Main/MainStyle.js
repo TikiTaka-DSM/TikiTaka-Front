@@ -57,6 +57,7 @@ export const ListBox = styled.div`
   overflow: auto;
   flex-wrap: wrap;
   margin-top: 5px;
+  overflow: auto;
 `;
 
 export const ItemBox = styled.div`
@@ -74,9 +75,9 @@ export const TextBox = styled.div`
 `;
 export const Name = styled.div`
   font-weight: bold;
-  font-size: 12px;
+  font-size: 14px;
 `;
 
 export const Message = styled.h1`
-  font-size: 10px;
+  font-size: 12px;
 `;

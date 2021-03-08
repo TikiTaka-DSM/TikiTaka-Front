@@ -41,6 +41,9 @@ export const ChatInput = styled.input.attrs({
   height: 60%;
   margin-left: 20px;
   padding-left: 10px;
+  ::placeholder {
+    font-size: 12px;
+  }
 `;
 
 export const img = styled.img`
@@ -53,8 +56,13 @@ export const img = styled.img`
   cursor: pointer;
 `;
 
+export const RightBox = styled.div``;
+
 export const Message = styled.div`
   max-width: 50%;
   width: auto;
   height: 10%;
+  border: none;
+  border-radius: 50px;
+  background-color: #ffa48e;
 `;
