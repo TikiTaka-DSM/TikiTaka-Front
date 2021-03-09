@@ -7,6 +7,7 @@ export const ChatContainer = styled.div`
 `;
 
 export const Header = styled.div`
+  position: fixed;
   display: flex;
   align-items: center;
   border-bottom: 3px solid #fec5b4;
@@ -19,7 +20,10 @@ export const Name = styled.span`
 `;
 
 export const MessageContainer = styled.div`
+  width: 100%;
   height: 85%;
+  margin-top: 70px;
+  overflow: auto;
 `;
 
 export const InputContainer = styled.div`
@@ -28,6 +32,7 @@ export const InputContainer = styled.div`
   width: 100%;
   border-top: 3px solid #fec5b4;
   height: 10%;
+  margin-top: 40px;
 `;
 
 export const ChatInput = styled.input.attrs({
@@ -56,13 +61,29 @@ export const img = styled.img`
   cursor: pointer;
 `;
 
-export const RightBox = styled.div``;
-
-export const Message = styled.div`
+export const MessageLayOut = styled.div`
+  margin: 0 auto;
+  padding: 10px;
+`;
+export const MyMessageBox = styled.div`
   max-width: 50%;
-  width: auto;
-  height: 10%;
+  width: ${(props) => props.width}%;
+  height: ${(props) => props.height}%;
   border: none;
   border-radius: 50px;
   background-color: #ffa48e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 15px;
+  float: right;
+`;
+export const Message = styled.span`
+  font-size: 12px;
+  font-weight: bold;
+`;
+
+export const MessageBox = styled(MyMessageBox)`
+  float: left;
 `;
