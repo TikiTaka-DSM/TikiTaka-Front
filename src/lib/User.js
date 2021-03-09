@@ -13,7 +13,7 @@ export const UserAdd = (id) => {
 };
 
 export const UserBlock = (user_id) => {
-  return getAccessToken.delete(`/friend/block/${user_id}`);
+  return getAccessToken.put(`/friend/block/${user_id}`);
 };
 
 export const UserSearch = (user_id) => {
